@@ -169,9 +169,11 @@ nav.scr{background:rgba(243,236,224,.96)}
 .hero h1{color:var(--cream-text)}
 .hero h1 .l2{color:var(--crema-2)}
 .hero-sub{margin-top:1.6rem;max-width:32ch;color:var(--cream-soft)}
-.hero-meta{margin-top:1.4rem;display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap;color:var(--cream-soft)}
-.hero-meta .chip{display:inline-flex;align-items:center;gap:.5em}
-.hero-meta .stars{color:var(--crema-2);letter-spacing:.1em}
+.hero-meta{margin-top:1.5rem;display:flex;align-items:center;gap:.7rem 1.1rem;flex-wrap:wrap;
+  font-family:"Assistant",sans-serif;font-weight:500;font-size:.9rem}
+.hero-meta .hm{display:inline-flex;align-items:center;gap:.45em;color:var(--cream-text)}
+.hero-meta .dotsep{color:var(--crema-2)}
+.hero-meta .stars{color:var(--crema-2);letter-spacing:.08em}
 .hero-cta{margin-top:2rem;display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap}
 .cue{position:absolute;left:var(--gut);bottom:34px;z-index:3;display:flex;flex-direction:column;align-items:center;gap:8px}
 .cue .rail{width:1px;height:46px;background:var(--line-cream);position:relative;overflow:hidden}
@@ -371,7 +373,7 @@ footer{background:var(--espresso);color:var(--cream-soft);padding:clamp(48px,7vh
   .hero-in{padding-bottom:clamp(48px,9vh,90px)}
   .hero h1{font-size:clamp(3.4rem,17vw,5rem)}
   .hero-sub{font-size:1.02rem;max-width:none}
-  .hero-meta{gap:.7rem;font-size:.8rem}
+  .hero-meta{gap:.5rem .9rem;font-size:.88rem;margin-top:1.3rem}
   .hero-cta{gap:.7rem;flex-direction:column;align-items:stretch}
   .hero-cta .btn{justify-content:center}
   .hero-cta .btn--fill{padding:1.15em 2em}
@@ -458,7 +460,6 @@ footer{background:var(--espresso);color:var(--cream-soft);padding:clamp(48px,7vh
 <header class="hero" id="top">
   <div class="hero-bg"><img src="images/hero.jpg" data-fb="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=1800&q=80" onerror="this.onerror=null;this.src=this.dataset.fb" alt="פנים בית הקפה לה גוטה"></div>
   <canvas id="steam"></canvas>
-  <div class="cue"><span class="t-label" style="writing-mode:vertical-rl;color:var(--cream-soft)">גלול</span><span class="rail"></span></div>
 
   <div class="hero-in">
     <div id="heroCopy" class="rise">
@@ -467,12 +468,12 @@ footer{background:var(--espresso);color:var(--cream-soft);padding:clamp(48px,7vh
         <span class="mask"><span>לה גוטה</span></span>
       </h1>
       <p class="hero-sub t-bodyL">קפה ספיישלטי נטחן במקום, מאפים צרפתיים שנאפים כל בוקר, וארוחות בוקר שמתחילות את היום נכון.</p>
-      <div class="hero-meta t-caption">
-        <span class="chip"><span class="stars">★★★★★</span> 4.8 בגוגל</span>
-        <span class="chip">·</span>
-        <span class="chip">פתוח מ-08:00</span>
-        <span class="chip">·</span>
-        <span class="chip">כשר</span>
+      <div class="hero-meta">
+        <span class="hm"><span class="stars">★★★★★</span> 4.8 כוכבים בגוגל</span>
+        <span class="dotsep">·</span>
+        <span class="hm">פתוחים מ-08:00</span>
+        <span class="dotsep">·</span>
+        <span class="hm">כשר</span>
       </div>
       <div class="hero-cta">
         <a href="#menu" class="btn btn--fill t-btn"><span class="lbl">לתפריט המלא</span></a>
@@ -919,8 +920,9 @@ footer{background:var(--espresso);color:var(--cream-soft);padding:clamp(48px,7vh
     var sy=scrollY;
     if(prog){var hh=document.documentElement.scrollHeight-innerHeight;prog.style.width=(hh>0?(sy/hh*100):0)+'%';}
     if(!reduce){
-      for(var i=0;i<plx.length;i++){var el=plx[i],r=el.getBoundingClientRect();
-        var c=r.top+r.height/2-innerHeight/2;el.style.transform='translate3d(0,'+(c*-0.045).toFixed(1)+'px,0)';}
+      if(innerWidth>900){for(var i=0;i<plx.length;i++){var el=plx[i],r=el.getBoundingClientRect();
+        var c=r.top+r.height/2-innerHeight/2;el.style.transform='translate3d(0,'+(c*-0.045).toFixed(1)+'px,0)';}}
+      else{for(var j=0;j<plx.length;j++)plx[j].style.transform='';}
       /* הירו נע ומתעמעם בגלילה (scroll-linked) */
       if(heroCopyEl&&sy<innerHeight){heroCopyEl.style.transform='translateY('+(sy*.16).toFixed(1)+'px)';
         heroCopyEl.style.opacity=Math.max(0,1-sy/(innerHeight*.62)).toFixed(3);}
