@@ -145,6 +145,9 @@ li::before {
 .legal-foot nav a { color: var(--cream-text); }
 .legal-foot nav a:hover { color: var(--crema-2); }
 .legal-foot nav span { color: var(--line-cream); }
+.legal-credit { margin-top: 10px; }
+.legal-credit a { color: var(--cream-text); text-decoration: underline; text-underline-offset: 3px; }
+.legal-credit a:hover { color: var(--crema-2); }
 
 @media (max-width: 640px) {
   .legal { padding-top: 34px; }
