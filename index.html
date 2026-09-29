@@ -265,7 +265,10 @@ nav.scr{background:rgba(246,239,227,.97)}
 .find-actions .btn{justify-content:center}
 .find-actions .full{grid-column:1/-1}
 .map-wrap{position:relative;overflow:hidden;border:1px solid var(--line);min-height:420px}
-.map-wrap iframe{width:100%;height:100%;border:0;display:block;filter:saturate(.92) contrast(1.02)}
+.map-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
+.map-wrap .map-ph{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+.map-load{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);display:inline-flex;align-items:center;gap:.6em;padding:.95em 1.7em;border:0;border-radius:999px;background:var(--petrol);color:var(--paper);font-family:"Assistant",sans-serif;font-weight:600;font-size:.95rem;cursor:pointer;box-shadow:0 12px 30px rgba(20,40,48,.35);transition:background .4s var(--ease),transform .4s var(--ease)}
+.map-load:hover{background:var(--ink);transform:translateX(-50%) translateY(-2px)}
 
 /* ===================== פוטר ===================== */
 footer{background:var(--espresso);color:var(--cream-soft);padding:clamp(48px,7vh,80px) 0 clamp(28px,4vh,40px)}
@@ -1006,8 +1009,10 @@ footer{background:var(--petrol-dd)}
       </div>
 
       <div class="map-wrap fig rise dl1">
-        <iframe title="מפת לה גוטה פטיסרי אשדוד והסביבה" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen
-          src="https://maps.google.com/maps?q=31.8113175,34.6441395&hl=he&z=15&output=embed"></iframe>
+        <img class="map-ph" src="assets/img/storefront.jpg" alt="חזית לה גוטה פטיסרי ברחוב אבא הלל סילבר 11, אשדוד" loading="lazy">
+        <button type="button" class="map-load" data-src="https://maps.google.com/maps?q=31.8113175,34.6441395&amp;hl=he&amp;z=15&amp;output=embed">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 1118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>הצגת המפה</span></button>
       </div>
     </div>
   </div>
@@ -1207,6 +1212,14 @@ footer{background:var(--petrol-dd)}
   sec.querySelector('.film-go').addEventListener('click',function(){play();v.scrollIntoView({behavior:reduce?'auto':'smooth',block:'center'});});
   v.addEventListener('ended',function(){sec.classList.remove('is-playing');v.removeAttribute('controls');v.load();});
   if('IntersectionObserver' in window)new IntersectionObserver(function(e){if(!e[0].isIntersecting&&!v.paused)v.pause();},{threshold:.2}).observe(v);
+})();
+(function(){
+  var b=document.querySelector('.map-load');if(!b)return;
+  b.addEventListener('click',function(){
+    var w=b.parentNode,f=document.createElement('iframe');
+    f.title='מפת לה גוטה פטיסרי, אבא הלל סילבר 11, אשדוד';f.referrerPolicy='no-referrer-when-downgrade';f.allowFullscreen=true;f.src=b.dataset.src;
+    w.appendChild(f);b.remove();var ph=w.querySelector('.map-ph');if(ph)ph.remove();
+  });
 })();
 </script>
 </body>
