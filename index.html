@@ -88,7 +88,7 @@ button,input,select,textarea{font-family:inherit;font-size:inherit;letter-spacin
 
 /* טיפול תמונה אחיד */
 .fig{position:relative;overflow:hidden;border-radius:var(--r);background:var(--paper-2)}
-.fig img{width:100%;height:100%;object-fit:cover;filter:saturate(.96) contrast(1.02);
+.fig img{width:100%;height:100%;object-fit:cover;
   clip-path:inset(0 0 100% 0);transform:scale(1.1);transition:clip-path var(--d3) var(--ease),transform 1.5s var(--ease)}
 .fig.in img{clip-path:inset(0 0 0 0);transform:scale(1)}
 .fig:hover img{transform:scale(1.05)}
@@ -96,7 +96,7 @@ button,input,select,textarea{font-family:inherit;font-size:inherit;letter-spacin
 .fig:hover .pl{opacity:1;transform:none}
 
 /* תנועה */
-.rise{opacity:0;transform:translateY(26px);will-change:transform,opacity;transition:opacity var(--d3) var(--ease),transform var(--d3) var(--ease)}
+.rise{opacity:0;transform:translateY(26px);transition:opacity var(--d3) var(--ease),transform var(--d3) var(--ease)}
 .rise.in{opacity:1;transform:none}
 .rise:not(.in){pointer-events:none}
 .dl1{transition-delay:.08s}.dl2{transition-delay:.16s}.dl3{transition-delay:.24s}.dl4{transition-delay:.32s}
@@ -162,8 +162,8 @@ nav.scr{background:rgba(246,239,227,.97)}
 .hero-cta{margin-top:2rem;display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap}
 .cue{position:absolute;left:var(--gut);bottom:34px;z-index:3;display:flex;flex-direction:column;align-items:center;gap:8px}
 .cue .rail{width:1px;height:46px;background:var(--line-cream);position:relative;overflow:hidden}
-.cue .rail::after{content:"";position:absolute;left:0;right:0;height:42%;background:var(--crema-2);animation:cue 1.9s var(--ease) infinite}
-@keyframes cue{0%{top:-50%}100%{top:118%}}
+.cue .rail::after{content:"";position:absolute;left:0;right:0;top:0;height:42%;background:var(--crema-2);animation:cue 1.9s var(--ease) infinite}
+@keyframes cue{0%{transform:translateY(-120%)}100%{transform:translateY(280%)}}
 
 /* ===================== אודות (קצר, קונקרטי) ===================== */
 .about{padding:var(--sec) 0}
@@ -283,7 +283,7 @@ footer{background:var(--espresso);color:var(--cream-soft);padding:clamp(48px,7vh
 
 /* ===================== אפקטים ואנימציות ===================== */
 /* פס התקדמות גלילה */
-#progress{position:fixed;top:0;right:0;height:2px;width:0;z-index:130;
+#progress{position:fixed;top:0;right:0;left:0;height:2px;z-index:130;transform:scaleX(0);transform-origin:right;
   background:linear-gradient(90deg,var(--gold-l),var(--petrol));box-shadow:0 0 12px rgba(154,208,203,.5)}
 /* קן-ברנס עדין על תמונת ההירו — תנועה רגועה ויוקרתית */
 .hero-bg img{will-change:auto}
@@ -332,13 +332,13 @@ footer{background:var(--espresso);color:var(--cream-soft);padding:clamp(48px,7vh
 .menu{position:relative;overflow:hidden}
 .menu>.wrap{position:relative;z-index:1}
 .menu::before{content:"";position:absolute;inset:-15%;z-index:0;pointer-events:none;opacity:.6;
-  will-change:transform;transform:translateZ(0);
+  transform:translateZ(0);
   background:radial-gradient(34% 40% at 22% 26%,rgba(66,111,130,.08),transparent 62%),
              radial-gradient(38% 44% at 82% 74%,rgba(176,141,87,.10),transparent 64%);
   animation:aurora 26s ease-in-out infinite alternate}
 @keyframes aurora{0%{transform:translate(0,0) scale(1)}100%{transform:translate(-3%,-4%) scale(1.12)}}
 /* כרטיסי 3D — חזרה חלקה ביציאת העכבר */
-.rev .rcard{transform-style:preserve-3d;will-change:transform}
+.rev .rcard{transform-style:preserve-3d}
 /* תגיות פריטי חתימה (סקשן המנהלת) */
 .chip{font-family:"Assistant",sans-serif;font-weight:500;font-size:.84rem;color:var(--ink-soft);border:1px solid var(--line);padding:.5em 1.05em;transition:border-color var(--d1),color var(--d1)}
 .chip:hover{border-color:var(--crema);color:var(--crema)}
@@ -346,14 +346,14 @@ footer{background:var(--espresso);color:var(--cream-soft);padding:clamp(48px,7vh
 
 /* ===================== שכבת וינטג' — פריז, צבעי הלוגו ===================== */
 /* גרעיניות נייר עדינה, כמו הדפס ישן */
-body::after{content:"";position:fixed;inset:0;z-index:150;pointer-events:none;opacity:.07;mix-blend-mode:multiply;
+body::after{content:"";position:fixed;inset:0;z-index:150;pointer-events:none;opacity:.05;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .12 0 0 0 0 .22 0 0 0 0 .26 0 0 0 .9 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 /* סוכך פריזאי מפוספס עם שוליים מסולסלים — יושב מתחת לניווט */
 .awning{--s:34px;position:absolute;right:0;left:0;top:100%;height:calc(10px + var(--s)/2);pointer-events:none;z-index:2;
   background:repeating-linear-gradient(90deg,var(--petrol) 0 var(--s),var(--paper) 0 calc(var(--s)*2));
   -webkit-mask:linear-gradient(#000 0 0) top/100% 10px no-repeat,radial-gradient(circle calc(var(--s)/2) at 50% 0,#000 97%,#0000) 0 10px/var(--s) calc(var(--s)/2) repeat-x;
           mask:linear-gradient(#000 0 0) top/100% 10px no-repeat,radial-gradient(circle calc(var(--s)/2) at 50% 0,#000 97%,#0000) 0 10px/var(--s) calc(var(--s)/2) repeat-x;
-  filter:drop-shadow(0 3px 2px rgba(20,40,48,.18))}
+}
 nav::after{display:none}
 section,header.hero{scroll-margin-top:92px}
 @media(max-width:560px){section{scroll-margin-top:78px}}
@@ -366,7 +366,7 @@ section,header.hero{scroll-margin-top:92px}
 .arch .fig{border-radius:999px 999px 4px 4px}
 .arch::before{content:"";position:absolute;inset:-12px;border:1px solid var(--gold);border-radius:999px 999px 8px 8px;pointer-events:none;opacity:.8}
 .about-fig.arch{padding:0 12px}
-.stamp{position:absolute;width:clamp(110px,12vw,158px);height:auto;left:-22px;bottom:9%;z-index:3;filter:drop-shadow(0 10px 22px rgba(20,40,48,.28));will-change:transform}
+.stamp{position:absolute;width:clamp(110px,12vw,158px);height:auto;left:-22px;bottom:9%;z-index:3;border-radius:50%;box-shadow:0 10px 26px rgba(20,40,48,.26)}
 @media(max-width:900px){.stamp{left:-6px;bottom:-26px;width:112px}}
 /* קמאו אובלי לאורלי */
 #owner .about-fig{padding:14px}
@@ -453,6 +453,13 @@ footer{background:var(--petrol-dd)}
 .rev-score .n,.rev-score .s,.rcard .st{color:var(--mint)}
 @media(prefers-reduced-motion:reduce){.stamp{transform:none!important}}
 
+/* ===================== טלפון: ביצועי גלילה ===================== */
+@media (hover:none),(max-width:900px){
+  body::after{display:none}
+  #steam{display:none}
+  .menu::before{animation:none;display:none}
+  .fig img{transition:clip-path .8s var(--ease),transform .8s var(--ease)}
+}
 /* ===================== מובייל ===================== */
 @media(max-width:900px){
   :root{--sec:clamp(56px,9vh,90px)}
@@ -493,6 +500,25 @@ footer{background:var(--petrol-dd)}
   footer{padding-bottom:calc(28px + 66px)}
   .mbar{display:flex}
 }
+@media(max-width:760px){
+  /* "מה מגישים אצלנו": התמונה נחתכת בתוך הקשת */
+  .mf .fig{aspect-ratio:4/5;overflow:hidden;border-radius:999px 999px 3px 3px;width:74%;max-width:290px;margin:0 auto 1.4rem;background:var(--paper)}
+  .mf .fig img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+}
+@media(max-width:640px){
+  /* "קינוחים בעבודת יד": רשימה אנכית — בלי גלילה לצדדים */
+  .vit-grid{display:grid;grid-template-columns:1fr;overflow:visible;margin:0;padding:0;gap:26px;scroll-snap-type:none}
+  .vcard{display:grid;grid-template-columns:38% 1fr;grid-template-rows:auto auto 1fr;column-gap:18px;text-align:right;align-items:start;flex:none}
+  .vcard .vc-wrap{grid-row:1/4}
+  .vc-fig{margin:8px;aspect-ratio:3/4}
+  .vc-tag{align-self:start;justify-self:start;margin:6px 0 .5rem;font-size:.7rem}
+  .vcard h3{font-size:1.2rem;margin-bottom:.35rem}
+  .vcard p{font-size:.88rem;line-height:1.6;margin:0}
+  .vcard--type{display:flex;text-align:center;border-radius:4px 4px 4px 4px;padding:30px 22px}
+  .vcard--type .vc-tag{align-self:center;justify-self:auto}
+  .vcard--type p{margin:0 auto}
+  .vcard--type .flav{flex-direction:row;flex-wrap:wrap;justify-content:center;gap:.4rem 1rem;font-size:1.05rem}
+}
 @media(prefers-reduced-motion:reduce){
   .rise,.mask>span,.fig img{transition:none!important;opacity:1!important;transform:none!important;clip-path:none!important;filter:none!important}
   .cue .rail::after,.topbar .o .d,.hero-bg img,.rev .glow,.final .glow,.menu::before{animation:none!important}
@@ -501,7 +527,6 @@ footer{background:var(--petrol-dd)}
 </head>
 <body>
 
-<a class="skip-link" href="#top">דילוג לתוכן הראשי</a>
 
 <!-- ===== תפריט נגישות ===== -->
 <button class="a11y-btn" aria-label="פתיחת תפריט נגישות" aria-expanded="false" aria-controls="a11yPanel">
@@ -1073,7 +1098,7 @@ footer{background:var(--petrol-dd)}
   requestAnimationFrame(function(){document.getElementById('heroCopy').classList.add('in');});
 
   /* ---------- אדי קפה עולים (קנבס, עדין) ---------- */
-  if(!reduce)(function(){
+  if(!reduce&&matchMedia('(hover:hover) and (pointer:fine)').matches&&innerWidth>900)(function(){
     var c=document.getElementById('steam'),x=c.getContext('2d',{alpha:true}),W,H,parts=[];
     var hero=document.querySelector('.hero');
     /* ספרייט רך מצויר פעם אחת — במקום ליצור גרדיאנט בכל פריים */
@@ -1105,7 +1130,7 @@ footer{background:var(--petrol-dd)}
   var ticking=false;
   function onScroll(){
     var sy=scrollY;
-    if(prog){var hh=document.documentElement.scrollHeight-innerHeight;prog.style.width=(hh>0?(sy/hh*100):0)+'%';}
+    if(prog){var hh=document.documentElement.scrollHeight-innerHeight;prog.style.transform='scaleX('+(hh>0?(sy/hh):0).toFixed(4)+')';}
     if(!reduce){
       if(innerWidth>900){for(var i=0;i<plx.length;i++){var el=plx[i],r=el.getBoundingClientRect();
         var c=r.top+r.height/2-innerHeight/2;el.style.transform='translate3d(0,'+(c*-0.045).toFixed(1)+'px,0)';}}
@@ -1174,7 +1199,7 @@ footer{background:var(--petrol-dd)}
 (function(){
   var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches||document.documentElement.getAttribute('data-motion')==='off';
   var stamp=document.querySelector('.stamp');
-  if(stamp&&!reduce){var t=false;addEventListener('scroll',function(){if(t)return;t=true;requestAnimationFrame(function(){stamp.style.transform='rotate('+(scrollY*.12).toFixed(1)+'deg)';t=false;});},{passive:true});}
+  if(stamp&&!reduce&&matchMedia('(hover:hover) and (pointer:fine)').matches){var t=false;addEventListener('scroll',function(){if(t)return;t=true;requestAnimationFrame(function(){stamp.style.transform='rotate('+(scrollY*.12).toFixed(1)+'deg)';t=false;});},{passive:true});}
   var sec=document.getElementById('film'),v=document.getElementById('filmVideo');
   if(!sec||!v)return;
   function play(){sec.classList.add('is-playing');v.setAttribute('controls','');var p=v.play();if(p&&p.catch)p.catch(function(){});}
