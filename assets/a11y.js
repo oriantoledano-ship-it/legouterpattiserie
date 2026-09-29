@@ -1,5 +1,5 @@
 /* ==========================================================================
-   לה גוטה — accessibility widget.
+   לה גוטה - accessibility widget.
    Loaded in <head> so saved preferences hit <html> before first paint.
    ========================================================================== */
 (function () {

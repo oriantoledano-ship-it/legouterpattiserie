@@ -1,14 +1,14 @@
 /* ==========================================================================
-   לה גוטה — accessibility widget + accessibility state overrides.
+   לה גוטה - accessibility widget + accessibility state overrides.
    Matches the site's own tokens (warm cream / espresso / crema, Frank Ruhl
-   Libre + Assistant, sharp corners — --r:0px everywhere on this site) so it
+   Libre + Assistant, sharp corners - --r:0px everywhere on this site) so it
    never reads as a bolted-on plugin. Works standalone on the legal pages too.
    ========================================================================== */
 
 .a11y-btn,
 .a11y-panel { font-family: 'Assistant', system-ui, sans-serif; }
 
-/* ---------- Floating button (kept circular — the one universal a11y
+/* ---------- Floating button (kept circular - the one universal a11y
    convention worth breaking the site's sharp-corner rule for) ---------- */
 .a11y-btn {
   position: fixed;
@@ -31,7 +31,7 @@
 .a11y-btn:hover { transform: scale(1.06); background: #426F82; border-color: #426F82; }
 .a11y-btn:focus-visible { outline: 2px solid #426F82; outline-offset: 3px; }
 
-/* ---------- Panel — sharp corners, matches every card/button on the site ---------- */
+/* ---------- Panel - sharp corners, matches every card/button on the site ---------- */
 .a11y-panel {
   position: fixed;
   inset-inline-start: 18px;
@@ -119,10 +119,10 @@
    Accessibility state overrides
    ========================================================================== */
 
-/* Larger text — scales page blocks, never the widget itself */
+/* Larger text - scales page blocks, never the widget itself */
 [data-text="large"] body > *:not(.a11y-btn):not(.a11y-panel):not(#loader) { zoom: 1.12; }
 
-/* High contrast — deepen the muted inks so body copy passes AA comfortably.
+/* High contrast - deepen the muted inks so body copy passes AA comfortably.
    `html[...]` so these outrank the page's own :root, same specificity but
    earlier in source order. */
 html[data-contrast="high"] {
