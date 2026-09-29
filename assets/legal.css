@@ -5,18 +5,18 @@
    ========================================================================== */
 
 :root {
-  --paper: #F3ECE0;
-  --paper-2: #EADFCD;
-  --espresso: #221913;
-  --ink: #2A2017;
-  --ink-soft: #6E6052;
-  --ink-faint: #9D8E7C;
-  --cream-text: #EEE4D3;
-  --cream-soft: #B6A78E;
-  --crema: #A85C32;
-  --crema-2: #C68A57;
-  --line: rgba(42, 32, 23, .14);
-  --line-cream: rgba(238, 228, 211, .16);
+  --paper: #F6EFE3;
+  --paper-2: #EDE3D1;
+  --espresso: #2F5566;
+  --ink: #1D3843;
+  --ink-soft: #56696F;
+  --ink-faint: #8B9A9B;
+  --cream-text: #F4EEE3;
+  --cream-soft: #B7CDC9;
+  --crema: #426F82;
+  --crema-2: #9AD0CB;
+  --line: rgba(29, 56, 67, .14);
+  --line-cream: rgba(244, 238, 227, .16);
 
   --serif: 'Frank Ruhl Libre', Georgia, serif;
   --sans: 'Assistant', system-ui, sans-serif;
